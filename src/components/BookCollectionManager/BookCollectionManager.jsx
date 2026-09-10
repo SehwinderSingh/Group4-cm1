@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Book from "./Book";
 import "./BookCollectionManager.css";
 
 function BookCollectionManager() {
@@ -142,27 +143,18 @@ function BookCollectionManager() {
         ) : (
           <ol className="books-list">
             {books.map((book, index) => (
-              <li key={index} className="book-item">
-                <div className="book-info">
-                  <span className="book-title">{book.title}</span>
-                  <span className="book-author">
-                    by {book.author}
-                  </span>
-                  <span>Genre: {book.genre}</span>
-                  <span>Language: {book.language}</span>
-                  <span>Edition: {book.edition}</span>
-                  <span>Pages: {book.pages}</span>
-                  <span>Rating: {book.rating}</span>
-                  <span>Year: {book.year}</span>
-                </div>
-
-                <button
-                  onClick={() => deleteBook(index)}
-                  className="delete-button"
-                >
-                  Delete
-                </button>
-              </li>
+              <Book
+                key={index}
+                title={book.title}
+                author={book.author}
+                genre={book.genre}
+                language={book.language}
+                edition={book.edition}
+                pages={book.pages}
+                rating={book.rating}
+                year={book.year}
+                onDelete={() => deleteBook(index)}
+              />
             ))}
           </ol>
         )}
