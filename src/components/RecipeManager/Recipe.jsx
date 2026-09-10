@@ -1,19 +1,38 @@
 function Recipe({ recipe, onDelete }) {
     return (
-      <div>
+      <article>
         <h2>{recipe.name}</h2>
+  
         <p>{recipe.description}</p>
-        <p>Cuisine: {recipe.cuisine}</p>
-        <p>Difficulty: {recipe.difficulty}</p>
-        <p>Cook Time: {recipe.cookTime} minutes</p>
-        <p>Servings: {recipe.servings}</p>
-        <p>Allergens: {recipe.allergens}</p>
-        <p>Ingredients: {recipe.ingredients}</p>
+  
+        <p>
+          <strong>Cuisine:</strong> {recipe.cuisine}
+        </p>
+  
+        <p>
+          <strong>Difficulty:</strong> {recipe.difficulty}
+        </p>
+  
+        <p>
+          <strong>Cook Time:</strong> {recipe.cookTime} minutes
+        </p>
+  
+        <p>
+          <strong>Servings:</strong> {recipe.servings}
+        </p>
+  
+        <p>
+          <strong>Allergens:</strong> {recipe.allergens || "None"}
+        </p>
+  
+        <p>
+          <strong>Ingredients:</strong> {recipe.ingredients}
+        </p>
   
         <button onClick={() => onDelete(recipe.id)}>
           Delete
         </button>
-      </div>
+      </article>
     );
   }
   
