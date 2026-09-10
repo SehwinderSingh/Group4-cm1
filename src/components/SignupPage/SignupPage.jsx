@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import "./SignupPage.css";
+import SignupSummary from './SignupSummary';
 
 const greeting = {
   en: "Hello",
@@ -93,9 +94,7 @@ function SignupPage() {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <p>{greeting[nationality]}!</p>
-      <p>Your email is: {email}</p>
-      <p>Your nationality is: {nationality}</p> 
+      <SignupSummary greeting={greeting[nationality]} email={email} nationality={nationality} />
     </div>
   )
 }
