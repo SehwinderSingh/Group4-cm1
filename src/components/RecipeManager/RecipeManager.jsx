@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Recipe from "./Recipe";
+import "./RecipeManager.css";
 
 function RecipeManager() {
   const [recipes, setRecipes] = useState([]);
@@ -51,10 +52,10 @@ function RecipeManager() {
   };
 
   return (
-    <div>
+    <div className="recipe-manager">
       <h1>Recipe Manager</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="recipe-form">
         <input
           type="text"
           name="name"
@@ -94,7 +95,7 @@ function RecipeManager() {
         <input
           type="number"
           name="cookTime"
-          placeholder="Cook time"
+          placeholder="Cook time (minutes)"
           value={formData.cookTime}
           onChange={handleChange}
           required
@@ -128,7 +129,7 @@ function RecipeManager() {
         <button type="submit">Add Recipe</button>
       </form>
 
-      <div>
+      <div className="recipe-list">
         {recipes.map((recipe) => (
           <Recipe
             key={recipe.id}

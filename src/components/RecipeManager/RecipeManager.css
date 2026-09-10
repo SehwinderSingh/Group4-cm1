@@ -1,1 +1,69 @@
 
+.recipe-manager {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .recipe-manager h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .recipe-form input,
+  .recipe-form textarea,
+  .recipe-form select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  .recipe-form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .recipe-form button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .recipe-list {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .recipe-list article {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .recipe-list h2 {
+    margin-top: 0;
+  }
+  
+  .recipe-list p {
+    line-height: 1.5;
+  }
+  
+  .recipe-list button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
