@@ -1,28 +1,55 @@
 import React, { useState } from "react";
+import Book from "./Book";
 import "./BookCollectionManager.css";
-
 
 function BookCollectionManager() {
   const [books, setBooks] = useState([]);
+
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-
-  // Handle input change for title
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  // Handle input change for author
-  function handleAuthorChange(event) {
-    setAuthor(event.target.value);
-  }
+  const [genre, setGenre] = useState("");
+  const [language, setLanguage] = useState("");
+  const [edition, setEdition] = useState("");
+  const [pages, setPages] = useState("");
+  const [rating, setRating] = useState("");
+  const [year, setYear] = useState("");
 
   // Add a new book to the list
-  function addBook() {
-    if (title.trim() !== "" && author.trim() !== "") {
-      setBooks((b) => [...b, { title, author }]);
+  function addBook(event) {
+    event.preventDefault();
+
+    if (
+      title.trim() !== "" &&
+      author.trim() !== "" &&
+      genre.trim() !== "" &&
+      language.trim() !== "" &&
+      edition.trim() !== "" &&
+      pages.trim() !== "" &&
+      rating.trim() !== "" &&
+      year.trim() !== ""
+    ) {
+      setBooks((b) => [
+        ...b,
+        {
+          title,
+          author,
+          genre,
+          language,
+          edition,
+          pages,
+          rating,
+          year,
+        },
+      ]);
+
       setTitle("");
-      setAuthor(""); // Clear the input fields
+      setAuthor("");
+      setGenre("");
+      setLanguage("");
+      setEdition("");
+      setPages("");
+      setRating("");
+      setYear("");
     }
   }
 
@@ -36,45 +63,98 @@ function BookCollectionManager() {
     <div className="app-container">
       <h1>Book Collection Manager</h1>
 
-      <div className="input-section">
+      <form className="input-section" onSubmit={addBook}>
         <input
           type="text"
           placeholder="Enter book title..."
           value={title}
-          onChange={handleTitleChange}
+          onChange={(event) => setTitle(event.target.value)}
           className="input-field"
         />
+
         <input
           type="text"
           placeholder="Enter author name..."
           value={author}
-          onChange={handleAuthorChange}
+          onChange={(event) => setAuthor(event.target.value)}
           className="input-field"
         />
-        <button onClick={addBook} className="add-button">
+
+        <input
+          type="text"
+          placeholder="Enter genre..."
+          value={genre}
+          onChange={(event) => setGenre(event.target.value)}
+          className="input-field"
+        />
+
+        <input
+          type="text"
+          placeholder="Enter language..."
+          value={language}
+          onChange={(event) => setLanguage(event.target.value)}
+          className="input-field"
+        />
+
+        <input
+          type="text"
+          placeholder="Enter edition..."
+          value={edition}
+          onChange={(event) => setEdition(event.target.value)}
+          className="input-field"
+        />
+
+        <input
+          type="number"
+          placeholder="Enter number of pages..."
+          value={pages}
+          onChange={(event) => setPages(event.target.value)}
+          className="input-field"
+        />
+
+        <input
+          type="number"
+          placeholder="Enter rating..."
+          value={rating}
+          onChange={(event) => setRating(event.target.value)}
+          className="input-field"
+        />
+
+        <input
+          type="number"
+          placeholder="Enter publication year..."
+          value={year}
+          onChange={(event) => setYear(event.target.value)}
+          className="input-field"
+        />
+
+        <button type="submit" className="add-button">
           Add Book
         </button>
-      </div>
+      </form>
 
       <div className="books-section">
         <h2>Your Books ({books.length})</h2>
+
         {books.length === 0 ? (
-          <p className="empty-message">No books yet. Add one to get started!</p>
+          <p className="empty-message">
+            No books yet. Add one to get started!
+          </p>
         ) : (
           <ol className="books-list">
             {books.map((book, index) => (
-              <li key={index} className="book-item">
-                <div className="book-info">
-                  <span className="book-title">{book.title}</span>
-                  <span className="book-author">by {book.author}</span>
-                </div>
-                <button
-                  onClick={() => deleteBook(index)}
-                  className="delete-button"
-                >
-                  Delete
-                </button>
-              </li>
+              <Book
+                key={index}
+                title={book.title}
+                author={book.author}
+                genre={book.genre}
+                language={book.language}
+                edition={book.edition}
+                pages={book.pages}
+                rating={book.rating}
+                year={book.year}
+                onDelete={() => deleteBook(index)}
+              />
             ))}
           </ol>
         )}
